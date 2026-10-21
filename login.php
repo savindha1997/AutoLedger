@@ -1,4 +1,16 @@
-<?php include "header.php"; ?>
+<?php
+include "header.php";
+include_once "dbconfig.php";
+
+$loginBusinessName = 'Demo Auto Sale';
+$businessInfoResult = mysqli_query($con, "SELECT b_name FROM business_info ORDER BY id ASC LIMIT 1");
+if ($businessInfoResult && mysqli_num_rows($businessInfoResult) > 0) {
+    $businessInfoRow = mysqli_fetch_assoc($businessInfoResult);
+    if (!empty($businessInfoRow['b_name'])) {
+        $loginBusinessName = $businessInfoRow['b_name'];
+    }
+}
+?>
 
 <title>Login</title>
 </head>
@@ -33,7 +45,7 @@
 
                 <div class="">
                     <h3 class="login-text">Welcome Back!</h3>
-                    <p class="mt-2 sub-topic-1-2">Login to continue <span class="shop-name-login">Demo Auto Sale</span> Finance Management</p>
+                    <p class="mt-2 sub-topic-1-2">Login to continue <span class="shop-name-login"><?php echo htmlspecialchars($loginBusinessName); ?></span> Finance Management</p>
                     <hr>
                 </div>
 
