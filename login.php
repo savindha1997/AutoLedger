@@ -40,7 +40,7 @@
                 <div>
                     <form action="auth.php" method="post">
                         <div class="form-group">
-                            <label class="add-byke-label">User Name <span class="text-danger">*</span></label>
+                            <label class="add-byke-label">Username <span class="text-danger">*</span></label>
                             <input type="text" class="form-control add-byke-input" name="uname" placeholder="Enter username" required>
                         </div>
                         <div class="form-group">
