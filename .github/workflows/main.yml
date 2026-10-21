@@ -21,6 +21,33 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Validate deployment secrets
+        env:
+          CPANEL_FTP_SERVER: ${{ secrets.CPANEL_FTP_SERVER }}
+          CPANEL_FTP_USERNAME: ${{ secrets.CPANEL_FTP_USERNAME }}
+          CPANEL_FTP_PASSWORD: ${{ secrets.CPANEL_FTP_PASSWORD }}
+          CPANEL_FTP_SERVER_DIR: ${{ secrets.CPANEL_FTP_SERVER_DIR }}
+        run: |
+          required_secrets=(
+            CPANEL_FTP_SERVER
+            CPANEL_FTP_USERNAME
+            CPANEL_FTP_PASSWORD
+            CPANEL_FTP_SERVER_DIR
+          )
+          missing_secrets=()
+
+          for secret_name in "${required_secrets[@]}"; do
+            if [[ -z "${!secret_name}" ]]; then
+              missing_secrets+=("$secret_name")
+            fi
+          done
+
+          if ((${#missing_secrets[@]})); then
+            printf '::error::Missing required GitHub Actions secret(s): %s. Add them under Settings > Secrets and variables > Actions.\n' \
+              "$(IFS=', '; echo "${missing_secrets[*]}")"
+            exit 1
+          fi
+
       - name: Deploy over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
