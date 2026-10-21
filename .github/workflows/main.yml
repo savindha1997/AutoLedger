@@ -21,12 +21,29 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      # --- Deploy Demo Site ---
       - name: Deploy over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            dbconfig.php
+
+      # --- Deploy Dilsh Site ---
+      - name: Deploy over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.DIL_FTP_USERNAME }}
+          password: ${{ secrets.DIL_FTP_PASSWORD }}
           protocol: ftps
           port: 21
           local-dir: ./
