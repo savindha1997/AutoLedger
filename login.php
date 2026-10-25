@@ -35,7 +35,7 @@ if ($businessInfoResult && mysqli_num_rows($businessInfoResult) > 0) {
             </div>
 
             <div class="login-showcase-bottom">
-                <p class="login-version-text mb-0">Version: 0.1</p>
+                <p class="login-version-text mb-0">Version: 1.0</p>
             </div>
         </div>
 
