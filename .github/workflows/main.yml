@@ -68,3 +68,19 @@ jobs:
             **/.git*/**
             **/.github/**
             dbconfig.php
+
+# --- Deploy Mahesh Site ---
+      - name: Deploy over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.MAHE_FTP_USERNAME }}
+          password: ${{ secrets.MAHE_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            dbconfig.php
