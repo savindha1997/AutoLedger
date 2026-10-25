@@ -132,3 +132,19 @@ jobs:
             **/.git*/**
             **/.github/**
             dbconfig.php
+
+ # --- Deploy Carz One Site ---
+      - name: Deploy over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.CARZONE_FTP_USERNAME }}
+          password: ${{ secrets.CARZONE_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            dbconfig.php
