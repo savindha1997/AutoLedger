@@ -84,3 +84,51 @@ jobs:
             **/.git*/**
             **/.github/**
             dbconfig.php
+
+  # --- Deploy Tuk Site ---
+      - name: Deploy over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.TUK_FTP_USERNAME }}
+          password: ${{ secrets.TUK_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            dbconfig.php
+
+  # --- Deploy RMW Site ---
+      - name: Deploy over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.RMW_FTP_USERNAME }}
+          password: ${{ secrets.RMW_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            dbconfig.php
+
+  # --- Deploy GENX Site ---
+      - name: Deploy over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.GENX_FTP_USERNAME }}
+          password: ${{ secrets.GENX_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            dbconfig.php
