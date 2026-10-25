@@ -515,10 +515,20 @@ body.help-drawer-open{
 }
 
 .table-panel{
+    max-width: 100%;
+    min-width: 0;
     background-color: #ffffff;
     border: 1px solid #e8efee;
     border-radius: 8px;
     padding: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-panel > .dataTables_wrapper,
+.table-panel > .table-responsive{
+    max-width: 100%;
+    min-width: 0;
 }
 
 .add-byke-label{
@@ -1071,6 +1081,39 @@ table.dataTable td a:hover{
 }
 
 @media (max-width: 992px){
+    .vehicles-table th:nth-child(1),
+    .vehicles-table td:nth-child(1),
+    .vehicles-table th:nth-child(3),
+    .vehicles-table td:nth-child(3),
+    .vehicles-table th:nth-child(4),
+    .vehicles-table td:nth-child(4){
+        display: none !important;
+    }
+
+    .dashboard-heading-row{
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .dashboard-heading-row > .col-lg-10{
+        flex: 1 1 auto;
+        width: auto;
+        min-width: 0;
+    }
+
+    .dashboard-heading-row > .col-lg-2{
+        flex: 0 0 auto;
+        width: auto;
+        padding-right: 12px;
+    }
+
+    .dashboard-heading-row .dashboard-filter-btn{
+        float: none !important;
+        white-space: nowrap;
+        margin-top: 0px !important;
+        margin-bottom: 16px;
+    }
+
     .top-bar{
         height: 64px;
         padding: 0 10px !important;
@@ -1106,12 +1149,9 @@ table.dataTable td a:hover{
         outline-offset: 2px;
     }
 
-    .login-brand-logo-t-b{
-        width: 32px;
-        height: 32px;
-        object-fit: contain;
-        flex: 0 0 auto;
-        margin-right: 8px;
+    .login-brand-logo-t-b,
+    .top-bar .navbar-collapse > .d-flex form{
+        display: none !important;
     }
 
     .top-bar .name-id{
@@ -1268,12 +1308,6 @@ table.dataTable td a:hover{
         flex-basis: 36px;
         width: 36px;
         height: 36px;
-        margin-right: 5px;
-    }
-
-    .login-brand-logo-t-b{
-        width: 28px;
-        height: 28px;
         margin-right: 5px;
     }
 
