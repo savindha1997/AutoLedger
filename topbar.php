@@ -17,6 +17,9 @@
     <nav class="navbar navbar-expand-lg fixed-top top-bar">
     
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open navigation menu" aria-controls="appSidebar" aria-expanded="false">
+            <i class="ri-menu-line" aria-hidden="true"></i>
+        </button>
         <img src="AutoLedger.png" alt="Kalhara Auto House Logo" class="login-brand-logo-t-b"> <a class="navbar-brand name-id" href="#"><?php echo htmlspecialchars($topbarBusinessName); ?></a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         
@@ -49,6 +52,45 @@
 
     </div>
     </nav>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var menuToggle = document.getElementById('mobileMenuToggle');
+        var menuOverlay = document.getElementById('mobileMenuOverlay');
+        var sidebar = document.getElementById('appSidebar');
+
+        if (!menuToggle || !menuOverlay || !sidebar) return;
+
+        function closeMenu() {
+            sidebar.classList.remove('is-open');
+            menuOverlay.classList.remove('is-open');
+            document.body.classList.remove('mobile-menu-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Open navigation menu');
+        }
+
+        menuToggle.addEventListener('click', function () {
+            var isOpen = sidebar.classList.toggle('is-open');
+            menuOverlay.classList.toggle('is-open', isOpen);
+            document.body.classList.toggle('mobile-menu-open', isOpen);
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        });
+
+        menuOverlay.addEventListener('click', closeMenu);
+        sidebar.querySelectorAll('.side-bar-link, .side-bar-link-sub').forEach(function (link) {
+            link.addEventListener('click', closeMenu);
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') closeMenu();
+        });
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 992) closeMenu();
+        });
+    });
+    </script>
 
     <div class="help-drawer-overlay" id="helpDrawerOverlay"></div>
     <aside class="help-drawer" id="helpDrawer" aria-hidden="true">

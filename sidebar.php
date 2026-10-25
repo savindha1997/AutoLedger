@@ -7,7 +7,7 @@ function sideActive($pages, $currentPage)
 }
 ?>
 
-<div class="side-bar">
+<div class="side-bar" id="appSidebar" aria-label="Main navigation">
     <div class="side-bar-items">       
         <ul>
         
