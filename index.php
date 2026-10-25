@@ -135,7 +135,7 @@
 
             <div class="col-lg-12 right-boder-1 pl-4 pr-4">
 
-            <div class="row">
+            <div class="row dashboard-heading-row">
                 <div class="col-lg-10">
                 <p class="mt-4 topic-1">Dashboard</p>
                 <p class="mb-4 sub-topic-1">Here is the analitical summary of your business</p>

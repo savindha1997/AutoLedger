@@ -157,7 +157,7 @@
             <p class="mb-4 sub-topic-1">Here are all bought Vehicles in-store and sold</p>
 
                 <div class="table-panel mb-4">
-                    <table id="example" class="table table-striped" style="width:100%">
+                    <table id="example" class="table table-striped vehicles-table" style="width:100%">
                         <thead>
                             <tr>
                                 <th>#ID</th>
