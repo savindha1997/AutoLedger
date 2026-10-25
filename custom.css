@@ -774,8 +774,8 @@ body.help-drawer-open{
     }
 
     .login-brand-logo{
-        width: 88px;
-        height: 88px;
+        
+        height: 36px !important;
     }
 
     .login-showcase-title{
@@ -1081,6 +1081,10 @@ table.dataTable td a:hover{
 }
 
 @media (max-width: 992px){
+    .login-showcase-middle{
+        margin-top: 36px;
+    }
+
     .vehicles-table th:nth-child(1),
     .vehicles-table td:nth-child(1),
     .vehicles-table th:nth-child(3),
