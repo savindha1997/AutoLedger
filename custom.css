@@ -774,8 +774,8 @@ body.help-drawer-open{
     }
 
     .login-brand-logo{
-        width: 88px;
-        height: 88px;
+        
+        height: 36px !important;
     }
 
     .login-showcase-title{
